@@ -23,7 +23,7 @@ $lista = [
         "nome" => "Rex",
         "raca" => "Poodle",
         "idade" => 4,
-        "sexo" => "Fêmea",
+        "sexo" => "Macho",
         "dono" => "José",
         "preco" => 10,
         "preco_com_desconto" => null,
@@ -70,7 +70,7 @@ e importar para ser exibido tudo dentro da mesma página no navegador -->
                 <p>Idade: <?= $pet["idade"] ?></p>
                 <p>Sexo: <?= $pet["sexo"] ?></p>
                 <p>Dono: <?= $pet["dono"] ?></p>
-                <p>Dono: <?= $pet["preco_com_desconto"] != null ? $pet["preco_com_desconto"] : $pet["preco"]  ?></p>
+                <p>Preço: <?= $pet["preco_com_desconto"] != null ? $pet["preco_com_desconto"] : $pet["preco"]  ?></p>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
