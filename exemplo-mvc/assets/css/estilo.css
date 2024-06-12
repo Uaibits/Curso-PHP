@@ -1,0 +1,87 @@
+.input-filtro {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.noticias {
+    background: #f6f6f6;
+    padding: 20px;
+}
+
+.noticia {
+    background: #f6f6f6;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    margin-bottom: 20px;
+}
+
+.noticia_curtidas {
+    position: relative;
+}
+.noticia_curtidas i {
+    color: #f00;
+    cursor: pointer;
+}
+
+.noticia_curtidas button {
+    background: transparent;
+    border: none;
+}
+.noticia_curtidas i:hover {
+   font-weight: bold;
+}
+
+.ja_curtiu {
+    color: #f00;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+/* Animação que ira reproduzir quando um post já tiver sido curtido */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.noticia_curtidas span {
+    margin-left: 5px;
+}
+
+.noticia_curtidas span:hover {
+    text-decoration: underline;
+}
+
+.noticia_curtidas .noticia_curtidas_lista {
+    visibility: hidden;
+    position: absolute;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    top: 5px;
+    left: 0;
+    width: 100px;
+    z-index: 1;
+    list-style: none;
+    transition: visibility 0.5s;
+}
+
+.noticia_curtidas span:hover ~ .noticia_curtidas_lista {
+    visibility: visible;
+    transition: visibility 0.5s;
+}
+
+.noticia_curtidas_lista:hover {
+    visibility: visible;
+    transition: visibility 0.5s;
+}
