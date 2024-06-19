@@ -1,0 +1,65 @@
+# Este arquivo precisa ficar no diretorio principal do seu projeto e obrigatoriamente precisa se chamar .htaccess
+# Ele é um arquivo de configuração para algumas funcionalidades do nosso site
+# Com ele é possivel proteger acesso a arquivos, criar url amigáveis (bonitas / customizadas)
+# limitar velocidade de download de arquivos grandes e diversas outras coisas
+
+# INICIO DA CONFIGURAÇÃO
+
+# Proibir a visualização dos arquivos do diretório
+# isso é importante para que não possamos ver quais arquivos tem dentro de um site
+# isso garante segurança para nosso site também para as imagens de nossos usuarios
+# visto que não será possivel navegar pelos arquivos como conseguiamos antes
+Options -Indexes
+
+# Vamos também aproveitar e criar rotas personalizadas para nosso arquivos
+# perceba que atualmente acessamos nosso html com uma url como essa abaixo
+# http://meusite.test/view/LoginView.php
+# mas os sites não possuem essas rotas pois elas são feias e vc precisa informar o nome
+# do seu arquivo php, vamos customizar nossas rotas para conseguirmos acessar dessa forma
+# http://meusite.test/logar
+
+# Para isso precisamos ativar o modulo de reescrita do nosso apache "PHP"
+# Ativar o módulo de reescrita de URLs
+RewriteEngine On
+
+
+# -------------- IMPORTANTE INFORMAR QUE --------------
+
+# Ao criar uma rota por exemplo /logar o que antes era /view/LoginView
+# você não precisará voltar um diretorio para sair da pasta view para acessar um controller por ex
+
+# SEMPRE QUE VC ACESSAR UMA URL CUSTOMIZADA VC ESTARÁ NO DIRETORIO PRINCIPAL DO PROJETO, LEMBRE-SE DISSO
+# OU SEJA, NESTE CASO SERÁ O exemplo-upload-arquivo O MEU DIRETORIO PRINCIPAL
+
+# o que era feito assim <form action="../controller/LoginController.php" method="post">
+# agora passa a ser somente assim <form action="controller/LoginController.php" method="post">
+# ou então vc pode criar uma url customizada para esse controller também
+
+# -------------- IMPORTANTE INFORMAR QUE --------------
+
+
+# Redirecionar uma rota específica para um arquivo PHP
+# Exemplo: redirecionar / para ./view/HomeView.php
+RewriteRule ^$ ./view/HomeView.php [L]
+RewriteRule ^album/novo$ ./view/NovoAlbumView.php [L]
+# Reescreve a URL 'album/{username}/{slug}' para 'view/NovoAlbumView.php?username={username}&slug={slug}'
+# portanto nossa url ficará dinamica e mais bonita
+# Exemplo: /album/EduardoMGP/nome-do-album
+# Exemplo: /album/Username/nome-do-album-2
+# e conseguimos acessar o id e o slug do album na pagina NovoAlbumView.php por meio do $_GET['username'] e $_GET['slug']
+# [A-Za-z]+ = Qualquer letra de A a Z
+# [a-zA-Z0-9_-] = Qualquer letra de A a Z, qualquer número de 0 a 9, underline e hífen
+# ou seja site.test/album/quanquer_numero/qualquer_letra_numero_underline_hifen
+RewriteRule ^album/([A-Za-z]+)/([a-zA-Z0-9_-]+)/?$ ./view/VisualizarAlbumView.php?username=$1&slug=$2 [L]
+
+# Redirecionar /logar para view/LoginView.php
+RewriteRule ^login$ ./view/LoginView.php [L]
+RewriteRule ^logout$ ./controller/LogoutController.php [L]
+
+# Redirecionar /cadastrar para view/RegistrarView.php
+RewriteRule ^registrar$ ./view/RegistrarView.php [L]
+
+
+RewriteRule ^api/login$ ./controller/LoginController.php [L]
+RewriteRule ^api/registrar$ ./controller/RegisterController.php [L]
+RewriteRule ^api/novo-album$ ./controller/NovoAlbumController.php [L]

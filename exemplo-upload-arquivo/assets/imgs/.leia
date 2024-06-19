@@ -1,0 +1,3 @@
+// essa pasta ficam as imagens que já possuem no seu site, ou seja, imagens fixas que vc utiliza
+// diretamente no html como por exemplo logo do site ou alguma outra
+// imagens enviadas via upload utilizamos geralmente a pasta public

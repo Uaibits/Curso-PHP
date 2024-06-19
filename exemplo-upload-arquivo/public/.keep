@@ -1,0 +1,6 @@
+// este arquivo não tem nenhuma utilizada, a unica utilizade dele é para que possamos conseguir subir essa pasta public para o git
+// o git não permite subir pastas vazias, por conta disso criamos esse arquivo .keep, ele pode ser vazio
+
+
+// A pasta public geralmente salvamos todos os uploads realizados pelo usuario,
+// o nome dessa pasta indica que todos arquivo aqui dentro serão publicos
