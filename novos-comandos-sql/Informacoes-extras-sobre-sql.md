@@ -13,6 +13,8 @@ Indice
 10. [Consulta trazendo as movimentações que tenham o valor entre 500 e 1000](#consulta-trazendo-as-movimentações-que-tenham-o-valor-entre-500-e-1000)
 11. [Referências](#referências)
 
+
+___
 ### Consulta onde nosso where é uma outra consulta
 #### Vamos buscar as movimentações de todos os clientes que contenha "Carlos" no nome
 
@@ -32,6 +34,8 @@ FROM movimentacao
 WHERE id_conta = (SELECT id FROM conta_bancaria WHERE nome LIKE '%carlos%')
 ```
 
+
+___
 ### Consulta com Ordenação
 #### Vamos buscar todas as movimentações ordenando pela data de movimentação
 O order by é um comando muito importante, pois ele nos permite ordenar os resultados da nossa consulta
@@ -51,6 +55,8 @@ SELECT * FROM movimentacao ORDER BY data_movimentacao DESC
 SELECT * FROM movimentacao ORDER BY data_movimentacao ASC
 ```
 
+
+___
 ### Consulta com soma de valores e campo que não existe na tabela sendo uma nova consulta
 Vamos buscar as movimentações de deposito dos clientes junto com a soma do valor de todas as movimentações
 #### Vamos analizar a consulta abaixo, pois temos alguns pontos interessantes
@@ -78,6 +84,8 @@ WHERE tipo = 'C'
 GROUP BY id_conta
 ```
 
+
+___
 ### Consulta com contador de dados
 #### Na consulta abaixo nós buscamos a quantidade de movimentações cada cliente fez
 > O COUNT é um comando que nos permite contar a quantidade de registros de um campo
@@ -92,6 +100,8 @@ COUNT(id) -- as qtd_movimentacoes
 FROM movimentacao GROUP BY id_conta
 ```
 
+
+___
 ### Consulta trazendo o menor e maior valor de transação realizado
 
 ```sql
@@ -108,6 +118,8 @@ MAX(valor) AS maior_valor_movimentacao
 FROM movimentacao
 ```
 
+
+___
 ### Consulta trazendo o menor valor de transação realizado de uma conta especifica
 
 ```sql
@@ -118,6 +130,8 @@ FROM movimentacao
 WHERE id_conta = 1
 ```
 
+
+___
 ### Consulta trazendo o menor valor de transação realizado de cada cliente
 
 ```sql
@@ -129,6 +143,8 @@ FROM movimentacao
 GROUP BY id_conta
 ```
 
+
+___
 ### Consulta trazendo a média de valor de transação realizado de cada cliente
 ```sql
 SELECT id,
@@ -138,6 +154,8 @@ FROM movimentacao
 WHERE tipo = 'C'
 ```
 
+
+___
 ### Consulta trazendo a quantidade de movimentações de cada cliente
 ```sql
 SELECT *
@@ -149,6 +167,8 @@ FROM movimentacao
 WHERE id_conta IN (1, 2)
 ```
 
+
+___
 ### Consulta trazendo as movimentações que tenham o valor entre 500 e 1000
 ```sql
 SELECT *
@@ -165,6 +185,8 @@ FROM movimentacao
 -- Aqui estamos buscando as movimentações que tenham a data entre 2024-06-01 e 2024-06-05
 WHERE data_movimentacao BETWEEN '2024-06-01' AND '2024-06-05'
 ```
+
+
 
 ### Referências
 
