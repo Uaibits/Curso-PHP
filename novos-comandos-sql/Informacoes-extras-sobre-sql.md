@@ -1,17 +1,20 @@
 #### Importe o arquivo base.sql para criar as tabelas e inserir os dados para realizar as consultas abaixo
 
 Indice
-1. [Consulta Onde Nosso Where é uma Outra Consulta](#consulta-onde-nosso-where-é-uma-outra-consulta)
-2. [Consulta com Ordenação](#consulta-com-ordenaçao)
-3. [Consulta com Soma de Valores e Campo que Não Existe na Tabela Sendo uma Nova Consulta](#consulta-com-soma-de-valores-e-campo-que-não-existe-na-tabela-sendo-uma-nova-consulta)
-4. [Consulta com Contador de Dados](#consulta-com-contador-de-dados)
-5. [Consulta Trazendo o Menor e Maior Valor de Transação Realizado](#consulta-trazendo-o-menor-e-maior-valor-de-transação-realizado)
-6. [Consulta Trazendo o Menor Valor de Transação Realizado de uma Conta Especifica](#consulta-trazendo-o-menor-valor-de-transação-realizado-de-uma-conta-especifica)
-7. [Consulta Trazendo o Menor Valor de Transação Realizado de Cada Cliente](#consulta-trazendo-o-menor-valor-de-transação-realizado-de-cada-cliente)
+1. [Consulta onde nosso where é uma outra consulta](#consulta-onde-nosso-where-é-uma-outra-consulta)
+2. [Consulta com Ordenação](#consulta-com-ordenação)
+3. [Consulta com soma de valores e campo que não existe na tabela sendo uma nova consulta](#consulta-com-soma-de-valores-e-campo-que-não-existe-na-tabela-sendo-uma-nova-consulta)
+4. [Consulta com contador de dados](#consulta-com-contador-de-dados)
+5. [Consulta trazendo o menor e maior valor de transação realizado](#consulta-trazendo-o-menor-e-maior-valor-de-transação-realizado)
+6. [Consulta trazendo o menor valor de transação realizado de uma conta especifica](#consulta-trazendo-o-menor-valor-de-transação-realizado-de-uma-conta-especifica)
+7. [Consulta trazendo o menor valor de transação realizado de cada cliente](#consulta-trazendo-o-menor-valor-de-transação-realizado-de-cada-cliente)
+8. [Consulta trazendo a média de valor de transação realizado de cada cliente](#consulta-trazendo-a-média-de-valor-de-transação-realizado-de-cada-cliente)
+9. [Consulta trazendo a quantidade de movimentações de cada cliente](#consulta-trazendo-a-quantidade-de-movimentações-de-cada-cliente)
+10. [Consulta trazendo as movimentações que tenham o valor entre 500 e 1000](#consulta-trazendo-as-movimentações-que-tenham-o-valor-entre-500-e-1000)
+11. [Referências](#referências)
 
-
-# CONSULTA ONDE NOSSO WHERE É UMA OUTRA CONSULTA
-### Vamos buscar as movimentações de todos os clientes que contenha "Carlos" no nome
+### Consulta onde nosso where é uma outra consulta
+#### Vamos buscar as movimentações de todos os clientes que contenha "Carlos" no nome
 
 Observe que nosso **where** do nosso select tem uma outra consulta buscando somente o id do cliente
 que contenha o nome Carlos, dessa forma conseguimos buscar as movimentações de um cliente
@@ -29,8 +32,8 @@ FROM movimentacao
 WHERE id_conta = (SELECT id FROM conta_bancaria WHERE nome LIKE '%carlos%')
 ```
 
-# CONSULTA COM ORDENAÇAO
-### Vamos buscar todas as movimentações ordenando pela data de movimentação
+### Consulta com Ordenação
+#### Vamos buscar todas as movimentações ordenando pela data de movimentação
 O order by é um comando muito importante, pois ele nos permite ordenar os resultados da nossa consulta
 de acordo com um campo específico, também pode ser utilizado em textos, números, datas, etc
 Em texto se comporta como ordem alfabética, em números como ordem crescente ou decrescente
@@ -48,9 +51,9 @@ SELECT * FROM movimentacao ORDER BY data_movimentacao DESC
 SELECT * FROM movimentacao ORDER BY data_movimentacao ASC
 ```
 
-# CONSULTA COM SOMA DE VALORES E CAMPO QUE NÃO EXISTE NA TABELA SENDO UMA NOVA CONSULTA
+### Consulta com soma de valores e campo que não existe na tabela sendo uma nova consulta
 Vamos buscar as movimentações de deposito dos clientes junto com a soma do valor de todas as movimentações
-### Vamos analizar a consulta abaixo, pois temos alguns pontos interessantes
+#### Vamos analizar a consulta abaixo, pois temos alguns pontos interessantes
 
 > `SUM(valor) AS soma_movimentacao` Aqui estamos somando todos os valores do campo **valor** da nossa consulta de movimentação
 
@@ -75,8 +78,8 @@ WHERE tipo = 'C'
 GROUP BY id_conta
 ```
 
-# CONSULTA COM CONTADOR DE DADOS
-### Na consulta abaixo nós buscamos a quantidade de movimentações cada cliente fez
+### Consulta com contador de dados
+#### Na consulta abaixo nós buscamos a quantidade de movimentações cada cliente fez
 > O COUNT é um comando que nos permite contar a quantidade de registros de um campo
 
 > O GROUP BY em nossa consulta é para que traga somente um registro para cada `id_conta` dessa forma cada linha da nossa consulta irá trazer o `id_conta` e a quantidade de movimentações que ele fez  
@@ -89,7 +92,7 @@ COUNT(id) -- as qtd_movimentacoes
 FROM movimentacao GROUP BY id_conta
 ```
 
-# CONSULTA TRAZENDO O MENOR E MAIOR VALOR DE TRANSAÇÃO REALIZADO
+### Consulta trazendo o menor e maior valor de transação realizado
 
 ```sql
 SELECT id,
@@ -105,7 +108,7 @@ MAX(valor) AS maior_valor_movimentacao
 FROM movimentacao
 ```
 
-# CONSULTA TRAZENDO O MENOR VALOR DE TRANSAÇÃO REALIZADO DE UMA CONTA ESPECIFICA
+### Consulta trazendo o menor valor de transação realizado de uma conta especifica
 
 ```sql
 SELECT id,
@@ -115,7 +118,7 @@ FROM movimentacao
 WHERE id_conta = 1
 ```
 
-# CONSULTA TRAZENDO O MENOR VALOR DE TRANSAÇÃO REALIZADO DE CADA CLIENTE
+### Consulta trazendo o menor valor de transação realizado de cada cliente
 
 ```sql
 SELECT id,
@@ -126,9 +129,7 @@ FROM movimentacao
 GROUP BY id_conta
 ```
 
-
-
-# CONSULTA BUSCANDO A MÉDIA DE TRANSAÇÕES DE CREDITO
+### Consulta trazendo a média de valor de transação realizado de cada cliente
 ```sql
 SELECT id,
 id_conta,
@@ -137,7 +138,7 @@ FROM movimentacao
 WHERE tipo = 'C'
 ```
 
-# CONSULTA BUSCANDO AS MOVIMENTAÇÕES DE 2 USUÁRIOS COM PELO ID
+### Consulta trazendo a quantidade de movimentações de cada cliente
 ```sql
 SELECT *
 FROM movimentacao
@@ -148,7 +149,7 @@ FROM movimentacao
 WHERE id_conta IN (1, 2)
 ```
 
-# CONSULTA BUSCANDO MOVIMENTAÇÕES NO VALOR ENTRE 500 A 1000
+### Consulta trazendo as movimentações que tenham o valor entre 500 e 1000
 ```sql
 SELECT *
 FROM movimentacao
@@ -165,7 +166,7 @@ FROM movimentacao
 WHERE data_movimentacao BETWEEN '2024-06-01' AND '2024-06-05'
 ```
 
-## Leia para entender mais sobre
+### Referências
 
 **GROUP BY** https://www.w3schools.com/sql/sql_orderby.asp  
 **SUM** https://www.w3schools.com/sql/sql_sum.asp  
