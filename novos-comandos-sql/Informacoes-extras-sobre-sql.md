@@ -1,4 +1,4 @@
-#### Importe o arquivo base.sql para criar as tabelas e inserir os dados para realizar as consultas abaixo
+#### Importe o arquivo [base.sql](https://github.com/Uaibits/Curso-PHP/blob/master/novos-comandos-sql/base.sql) para criar as tabelas e inserir os dados para realizar as consultas abaixo
 
 Indice
 1. [Consulta onde nosso where é uma outra consulta](#consulta-onde-nosso-where-é-uma-outra-consulta)
