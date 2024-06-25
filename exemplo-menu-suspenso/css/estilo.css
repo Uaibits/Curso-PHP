@@ -1,0 +1,49 @@
+.perfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333333;
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.perfil i {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.perfil .perfil__area {
+    display: flex;
+    align-items: center;
+}
+.perfil .perfil__area .perfil__nome {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.perfil .perfil__area .perfil__foto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    box-shadow: 0 0 10px rgb(238, 238, 238);
+}
+
+.perfil .perfil__area .perfil__foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.passo {
+    display: block;
+    text-align: center;
+    width: 300px;
+    margin: 50px auto;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,9 @@
+.perfil .perfil__menu {
+    /* Vamos fazer com que o perfil__menu fique absoluto em cima da nossa div .perfil
+       Para que possamos posicionar corretamente a div */
+    position: absolute;
+    /*top: 100% para jogarmos a div para baixo da div .perfil*/
+    top: 100%;
+    left: 0;
+
+}

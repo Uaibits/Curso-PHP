@@ -1,0 +1,29 @@
+.perfil i {
+    transition: all 0.5s;
+}
+.perfil .perfil__menu {
+
+    /*Agora vamos ocultar a div utilizando a propriedade visibility: hidden;*/
+    visibility: hidden;
+    /*Vamos também deixar o tamanho max-height como 0 para criamos um efeito */
+    /*ao passar o mouse sobre a div .perfil*/
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+
+.perfil:hover .perfil__menu {
+    /*Agora vamos exibir a div utilizando a propriedade visibility: visible;*/
+    visibility: visible;
+    /*Vamos também deixar o tamanho max-height como um tamanho maior que o necessário para exibir tudo para criamos um efeito */
+    /*ao passar o mouse sobre a div .perfil*/
+    max-height: 1000px;
+    transition: all 0.5s;
+}
+
+.perfil:hover i {
+    /*Vamos também rotacionar o ícone para que ele fique para cima ao passar o mouse sobre a div .perfil*/
+    transform: rotate(180deg);
+    transition: all 0.5s;
+}
